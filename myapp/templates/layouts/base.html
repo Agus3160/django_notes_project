@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/form-style.css' %}">
+  <link rel="icon" href="{% static 'images/icon.png' %}" type="image/png">
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <title>{% block title %} Todo App {% endblock %}</title>
+</head>
+
+<body style="background-color: #212f3c;">
+
+  <header class="mb-2">
+    <nav class="bg-dark text-white d-flex justify-content-between px-3 py-3 align-items-center">
+      <h1 class="my-0">NOTES APP</h1>
+      <ul class="d-flex gap-3 list-unstyled align-items-center my-auto">
+        <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+        <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+</body>
+
+</html>

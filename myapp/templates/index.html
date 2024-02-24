@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+<div class="text-white">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <h2 class="m-0">List of Notes</h2>
+    <a class="btn btn-primary" href="{% url 'add' %}">Add Note</a>
+  </div>
+  {% if notes %}
+    <div class="d-flex flex-column gap-2">
+      {% for note in notes %}
+        {% include 'layouts/note-card.html' %}
+      {% endfor %}
+    </div>  
+  {% else %}
+  <p>There are no notes to display</p>
+  {% endif %}
+</div>
+{% endblock %}
