@@ -1,0 +1,13 @@
+.navbar-util{
+  height: 64px;
+}
+
+.main-page{
+  height: calc(100dvh - 64px);
+  overflow: auto;
+}
+
+.form-container-util{
+  max-width: 600px;
+  margin: auto;
+}

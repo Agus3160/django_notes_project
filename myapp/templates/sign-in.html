@@ -5,14 +5,39 @@
 {% endblock %}
 
 {% block content %}
-<div class="text-white d-flex flex-column align-items-center">
-  <h2>SignIn</h2>
-  <form>
+  <form method="POST" action="{% url 'sign-in' %}" class="text-white gap-3 form-container-util d-flex flex-column align-items-center justify-content-center mx-auto">
     
-    
+    <h2 class="text-center m-0">SignIn</h2>
 
-    <button type="submit" class="btn btn-primary">SignIn</button>
+    {% csrf_token %}
 
+    <div class="form-group w-100">
+      <label class="form-label" for="{{ form.username.id_for_label }}">Username</label>
+      {{ form.username}}
+    </div>
+
+    <div class="form-group w-100">
+      <label class="form-label" for="{{ form.password.id_for_label }}">Password</label>
+      {{ form.password}}
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">SignIn</button>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between w-100 ">
+      <a class="btn btn-sm btn-link" href="{% url 'sign-up' %}">Dont have an account?</a>
+      <a class="btn btn-sm btn-link" href="{% url 'password-reset' %}">Did you forget your password?</a>
+    </div>
+
+    {% if form.errors %}
+    <div class="alert alert-danger mt-3">
+      <ul>
+      {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
   </form>
-</div>
 {% endblock %}
